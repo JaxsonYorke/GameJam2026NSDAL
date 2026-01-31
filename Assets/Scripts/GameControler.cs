@@ -8,7 +8,14 @@ public class GameController : MonoBehaviour
 {
     public enum GameState {
         firstCutscene,
-        onRoad
+        onRoad,
+        inChapel,
+        inPuzzle,
+        inMaze,
+        inBattle,
+        finalDecision,
+        gameEnd,
+        characterDeath
     }
 
     [SerializeField] private EventHandler eventHandler;
@@ -17,9 +24,6 @@ public class GameController : MonoBehaviour
     public GameState currStoryState;
 
     [SerializeField] public bool isInCutscene;
-    [SerializeField] public bool isInWalkingAround;
-    [SerializeField] public bool isInMingame;
-
     
 
     void Awake()
