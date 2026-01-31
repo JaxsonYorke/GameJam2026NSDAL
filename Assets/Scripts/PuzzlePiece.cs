@@ -26,7 +26,7 @@ public class PuzzlePiece : MonoBehaviour
 
     void Start()
     {
-        snapPosition = new Vector3(0f,0f,0f);
+        snapPosition = new Vector3(0f,1.3f,0f);
     }
 
     void Update()

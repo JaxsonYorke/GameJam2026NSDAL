@@ -14,7 +14,7 @@ public class PuzzleManager : MonoBehaviour
             PolygonCollider2D poly = piece.GetComponent<PolygonCollider2D>();
             Vector2 center = poly.bounds.center;
             Debug.Log(center);
-            piece.transform.position += (Vector3)(new Vector2(ListLength/-2,-2f) - center);
+            piece.transform.position += (Vector3)(new Vector2(ListLength/-2,-3.8f) - center);
             float length = puzzlePieces.Length;
             piece.transform.position += new Vector3(ListLength*i/length,0f,0f);
             i++;
