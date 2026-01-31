@@ -60,25 +60,19 @@ public class GameController : MonoBehaviour
      * STATE TRANSITIONS
      * ============================================================ */
 
-    IEnumerator TransitionToFirstCutscene()
-    {// Load scene completely
-        yield return LoadSceneRoutine("GameIntro");
-
-        // Scene is now active — safe to find objects
-        storyController = GameObject
-            .FindWithTag("StoryController")
-            .GetComponent<CutsceneController>();
-
-        storyController.startCutscene();
-    }
-
     void SetState(GameState newState)
     {
         CurrentState = newState;
         switch (newState)
         {
-            case GameState.MainMenu:
-                StartCoroutine(TransitionToFirstCutscene());
+            case GameState.FirstCutscene:
+                StartCoroutine(LoadSceneRoutine("GameIntro"));
+
+                storyController = GameObject
+                    .FindWithTag("StoryController")
+                    .GetComponent<CutsceneController>();
+
+                storyController.startCutscene();
             break;
 
         }
@@ -118,16 +112,7 @@ public class GameController : MonoBehaviour
 
         // Wait until activation is complete
         while (!op.isDone)
-            yield return FadeIn();
+            yield return FadeController.Instance.FadeIn();
     }
 
-    IEnumerator FadeOut()
-    {
-        yield return FadeController.Instance.FadeOut();
-    }
-
-    IEnumerator FadeIn()
-    {
-        yield return FadeController.Instance.FadeIn();
-    }
 }
