@@ -1,11 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.CustomDebug;
 
 // This class will be a parent class for other cutscenes
 public class StoryController : MonoBehaviour
 {
     [SerializeField]
     public List<SpriteRecord> SpriteList = new();
+
+
+
+    public enum CutSceneType
+    {
+        playerWalkThrough,
+        autoWalkThrough
+    }
+    public CutSceneType cutsceneType;
+
+
+
     void Awake()
     {
         DontDestroyOnLoad(this);
@@ -21,5 +34,4 @@ public class StoryController : MonoBehaviour
 public class SpriteRecord
 {
     public Sprite sprite;
-    public int index;
 }
