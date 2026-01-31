@@ -6,7 +6,9 @@ public class EventHandler : MonoBehaviour
 {
     const int INSPECTORSPACING = 8;
     [Header("Game Wide")][Space(INSPECTORSPACING)]
-    [SerializeField] private UnityEvent _OnGameRestart = new();
+    [SerializeField] private UnityEvent _CutsceneAdvance = new();
+
+    [SerializeField] private UnityEvent _MB1clicked = new();
 
     [Header("Character Events")][Space(INSPECTORSPACING)]
     [SerializeField] private MonsterEvents _MonsterEvents = new();
@@ -30,7 +32,7 @@ public class EventHandler : MonoBehaviour
 
     public void FallThroughHeadPlatform() {_PrincessEvents.OnFallingThroughHeadPlatform.Invoke();}
 
-    public void RestartGame() {_OnGameRestart.Invoke();}
+    public void triggerCutsceneAdvance() {_CutsceneAdvance.Invoke();}
 
 // Make the public getters
 
@@ -49,7 +51,8 @@ public class EventHandler : MonoBehaviour
     public UnityEvent OnCrushPrincess => _OnCrushPrincess;
 
     //Game Wide
-    public UnityEvent OnGameRestart => _OnGameRestart;
+    public UnityEvent OnCutsceneAdvance => _CutsceneAdvance;
+    public UnityEvent MB1clicked => _MB1clicked;
 }
 
 [System.Serializable]
