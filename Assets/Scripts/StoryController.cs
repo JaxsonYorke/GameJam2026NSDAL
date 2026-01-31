@@ -35,8 +35,13 @@ public class StoryController : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
 
-        currentSprite = 0;
+        currentSprite = -1;
+       
+    }
 
+    void startCutscene()
+    {
+        currentSprite++;
         if(cutsceneType == CutSceneType.playerWalkThrough)
         {
             timeout = false;
@@ -45,12 +50,9 @@ public class StoryController : MonoBehaviour
         {
             StartCoroutine(PlayCutscene());
         }
-
-
-        // DebugStatsDisplay.Instance.RegisterDebugStatsRequest(
-        //     new DebugStatsRequest("Tmeout ", () => {return timeout;}));
-        
     }
+
+
 
     private IEnumerator UnTimeout(float time)
     {
