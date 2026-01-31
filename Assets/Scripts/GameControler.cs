@@ -32,6 +32,8 @@ public class GameController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         gameObject.tag = "GameController";
+
+
     }
 
     void OnEnable()
@@ -39,12 +41,35 @@ public class GameController : MonoBehaviour
         // Global input → event
         if (eventHandler != null)
             eventHandler.MB1clicked.AddListener(OnPrimaryClick);
+
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
         if (eventHandler != null)
             eventHandler.MB1clicked.RemoveListener(OnPrimaryClick);
+
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Try to find it — but don't assume it exists
+        GameObject storyObj = GameObject.FindWithTag("StoryController");
+
+        if (storyObj == null)
+            return; // Normal scene, nothing to do
+
+        storyController = storyObj.GetComponent<CutsceneController>();
+        storyController.StartCutscene();
+
+        if(scene.name == "GameIntro")
+        {
+            CurrentState = GameState.FirstCutscene;
+        }
     }
 
     /* ============================================================
@@ -68,11 +93,6 @@ public class GameController : MonoBehaviour
             case GameState.FirstCutscene:
                 StartCoroutine(LoadSceneRoutine("GameIntro"));
 
-                storyController = GameObject
-                    .FindWithTag("StoryController")
-                    .GetComponent<CutsceneController>();
-
-                storyController.startCutscene();
             break;
 
         }
@@ -84,6 +104,7 @@ public class GameController : MonoBehaviour
 
     void OnPrimaryClick()
     {
+        Debug.Log("mb1 pressed");
         switch(CurrentState)
         {
             case GameState.FirstCutscene when !storyController.timeout:

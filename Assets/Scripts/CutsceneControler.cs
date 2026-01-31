@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.CustomDebug;
 using System.Collections;
-using System;
+using UnityEngine.UI;
 
-[RequireComponent(typeof(SpriteRenderer))]
 
 // This class will be a parent class for other cutscenes
 public class CutsceneController : MonoBehaviour
 {
+    public static CutsceneController Instance;
+
     public enum CutSceneType
     {
         playerWalkThrough,
@@ -16,17 +17,24 @@ public class CutsceneController : MonoBehaviour
     }
     public CutSceneType cutsceneType;
 
-    [SerializeField] public int currentSprite;
+    [SerializeField] public static int currentSprite;
     [SerializeField] public List<SpriteRecord> SpriteList;
-    private SpriteRenderer sr;
+    [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject CutsceneMouseIcon;
+    [SerializeField] private Image image;
 
     public bool timeout;
 
 
-
-
     void Awake()
     {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         // DontDestroyOnLoad(this);
         gameObject.tag = "StoryController";
 
@@ -34,15 +42,21 @@ public class CutsceneController : MonoBehaviour
 
     void Start()
     {
-        sr = GetComponent<SpriteRenderer>();
-
-        currentSprite = -1;
+        CutsceneMouseIcon.SetActive(false);
        
     }
 
-    public void startCutscene()
+    void Update()
     {
-        currentSprite++;
+        if(cutsceneType == CutSceneType.playerWalkThrough && !timeout && !CutsceneMouseIcon.activeSelf)
+        {
+            // enable the mouse Icon
+            CutsceneMouseIcon.SetActive(true);
+        }
+    }
+
+    public void StartCutscene()
+    {
         if(cutsceneType == CutSceneType.playerWalkThrough)
         {
             timeout = false;
@@ -63,12 +77,14 @@ public class CutsceneController : MonoBehaviour
 
     public void AdvanceCutscene()
     {
-        currentSprite++;
+        Debug.Log(currentSprite);
         SpriteRecord currRecord = SpriteList[currentSprite];
-        sr.sprite = currRecord.sprite;
+        image.sprite = currRecord.sprite;
 
+        currentSprite++;
 
         timeout = true;
+        CutsceneMouseIcon.SetActive(false);
         StartCoroutine(UnTimeout(currRecord.viewtime));
     }
 
@@ -78,7 +94,7 @@ public class CutsceneController : MonoBehaviour
         {
             SpriteRecord record = SpriteList[currentSprite];
 
-            sr.sprite = record.sprite;
+            image.sprite = record.sprite;
 
             yield return new WaitForSeconds(record.viewtime);
 
@@ -89,7 +105,6 @@ public class CutsceneController : MonoBehaviour
     }
 
 }
-
 
 
 
