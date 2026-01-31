@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(SpriteRenderer))]
 
 // This class will be a parent class for other cutscenes
-public class StoryController : MonoBehaviour
+public class CutsceneController : MonoBehaviour
 {
     public enum CutSceneType
     {
@@ -28,6 +28,7 @@ public class StoryController : MonoBehaviour
     void Awake()
     {
         // DontDestroyOnLoad(this);
+        gameObject.tag = "StoryController";
 
     }
 
@@ -39,7 +40,7 @@ public class StoryController : MonoBehaviour
        
     }
 
-    void startCutscene()
+    public void startCutscene()
     {
         currentSprite++;
         if(cutsceneType == CutSceneType.playerWalkThrough)

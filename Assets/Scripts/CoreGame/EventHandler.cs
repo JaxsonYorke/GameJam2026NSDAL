@@ -1,19 +1,40 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-
+[RequireComponent(typeof(GameController))]
 public class EventHandler : MonoBehaviour
 {
+    private GameController gc;
     const int INSPECTORSPACING = 8;
     [Header("Game Wide")][Space(INSPECTORSPACING)]
     [SerializeField] private UnityEvent _CutsceneAdvance = new();
 
     [SerializeField] private UnityEvent _MB1clicked = new();
-
+    [SerializeField] private UnityEvent _MB2clicked = new();
 
     void Start()
     {
+        gc = GetComponent<GameController>();
+    }
 
+    void Update()
+    {
+        switch (gc.CurrentState)
+        {
+            case GameController.GameState.MainMenu:
+
+            break;
+            case GameController.GameState.FirstCutscene:
+                if (Input.GetMouseButtonDown(0))
+                {
+                    _MB1clicked.Invoke();
+                }
+                if (Input.GetMouseButtonDown(1))
+                {
+                    _MB2clicked.Invoke();
+                }
+            break;
+        }
     }
 
 

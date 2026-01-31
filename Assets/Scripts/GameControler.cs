@@ -1,88 +1,133 @@
 using UnityEngine;
-using Assets.Scripts.CustomDebug;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
-
-// This class will be a parent class for other cutscenes
 public class GameController : MonoBehaviour
 {
-    public enum GameState {
-        firstCutscene,
-        onRoad
+    public static GameController Instance;
+
+    public enum GameState
+    {
+        MainMenu,
+        FirstCutscene,
+        OnRoad
     }
 
+    [Header("State")]
+    public GameState CurrentState { get; private set; }
+
+    [Header("References")]
     [SerializeField] private EventHandler eventHandler;
-    [SerializeField] private StoryController storyController;
 
-    public GameState currStoryState;
-
-    [SerializeField] public bool isInCutscene;
-    [SerializeField] public bool isInWalkingAround;
-    [SerializeField] public bool isInMingame;
-
-    
+    [SerializeField] private CutsceneController storyController;
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
-    }
-
-    void Start()
-    {
-        // DebugStatsDisplay.Instance.RegisterDebugStatsRequest(
-        //     new DebugStatsRequest("MouseButtonPressed", () => {return Input.GetMouseButton(0);}));
-        // if (SceneManager.GetActiveScene().name == "GameIntro")
-        // {
-        //     isInCutscene = true;
-        // }
-
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        switch (currStoryState)
+        if (Instance != null)
         {
-            case GameState.firstCutscene:
-                if(storyController.cutsceneType == StoryController.CutSceneType.playerWalkThrough){
-                    if (Input.GetMouseButtonUp(0) && !storyController.timeout)
-                    {
-                        storyController.AdvanceCutscene();
-                    }
-                    
-                }
-                
-                break;
-            case GameState.onRoad:
-                {
-                    
-                }
-                break;
+            Destroy(gameObject);
+            return;
         }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        gameObject.tag = "GameController";
     }
 
-    public void SetGameState(GameState newState)
+    void OnEnable()
     {
-        currStoryState = newState;
+        // Global input → event
+        if (eventHandler != null)
+            eventHandler.MB1clicked.AddListener(OnPrimaryClick);
+    }
+
+    void OnDisable()
+    {
+        if (eventHandler != null)
+            eventHandler.MB1clicked.RemoveListener(OnPrimaryClick);
+    }
+
+    /* ============================================================
+     * PUBLIC ENTRY POINTS
+     * ============================================================ */
+
+    public void AdvanceFromMainMenu()
+    {
+        SetState(GameState.FirstCutscene);
+    }
+
+    /* ============================================================
+     * STATE TRANSITIONS
+     * ============================================================ */
+
+    IEnumerator TransitionToFirstCutscene()
+    {// Load scene completely
+        yield return LoadSceneRoutine("GameIntro");
+
+        // Scene is now active — safe to find objects
+        storyController = GameObject
+            .FindWithTag("StoryController")
+            .GetComponent<CutsceneController>();
+
+        storyController.startCutscene();
+    }
+
+    void SetState(GameState newState)
+    {
+        CurrentState = newState;
         switch (newState)
         {
-            case GameState.firstCutscene:
-            
+            case GameState.MainMenu:
+                StartCoroutine(TransitionToFirstCutscene());
             break;
+
         }
     }
 
+    /* ============================================================
+     * INPUT HANDLING (EVENT-DRIVEN)
+     * ============================================================ */
 
-}
-
-public class StoryVariables
-{
-    public bool isStartOfGame;
-    public bool firstCutsceneFinshed;
-
-    public StoryVariables()
+    void OnPrimaryClick()
     {
-        isStartOfGame = false;
-        firstCutsceneFinshed = false;
+        switch(CurrentState)
+        {
+            case GameState.FirstCutscene when !storyController.timeout:
+                storyController.AdvanceCutscene();
+            break;
+        }
+
+    }
+
+    /* ============================================================
+     * SCENE LOADING
+     * ============================================================ */
+
+    IEnumerator LoadSceneRoutine(string sceneName)
+    {
+        AsyncOperation op = SceneManager.LoadSceneAsync(sceneName);
+        op.allowSceneActivation = false;
+        yield return FadeController.Instance.FadeOut();
+
+        // Wait until scene is loaded (90%)
+        while (op.progress < 0.9f)
+            yield return null;
+
+        // Activate scene
+        op.allowSceneActivation = true;
+
+        // Wait until activation is complete
+        while (!op.isDone)
+            yield return FadeIn();
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return FadeController.Instance.FadeOut();
+    }
+
+    IEnumerator FadeIn()
+    {
+        yield return FadeController.Instance.FadeIn();
     }
 }
