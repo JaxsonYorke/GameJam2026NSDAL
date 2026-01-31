@@ -12,7 +12,6 @@ public class PuzzlePiece : MonoBehaviour
     private Vector3 dragOffset;
     private bool dragging = false;
     private bool locked = false;
-    //public Vector2 center;
 
     void Awake()
     {
@@ -23,15 +22,11 @@ public class PuzzlePiece : MonoBehaviour
         rb.bodyType = RigidbodyType2D.Kinematic;
         rb.gravityScale = 0;
         
-        //PolygonCollider2D polyCollider = GetComponent<PolygonCollider2D>();
-        //Vector2 center = polyCollider.bounds.center;
-        //Debug.Log(center);
     }
 
     void Start()
     {
         snapPosition = new Vector3(0f,0f,0f);
-        //transform.position += (Vector3)Random.insideUnitCircle * 4f;
     }
 
     void Update()
