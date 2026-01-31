@@ -1,16 +1,25 @@
+using System.Collections.Generic;
 using UnityEngine;
 
+// This class will be a parent class for other cutscenes
 public class StoryController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField]
+    public List<SpriteRecord> SpriteList = new();
+    void Awake()
     {
-        
+        DontDestroyOnLoad(this);
     }
-
     // Update is called once per frame
     void Update()
     {
         
     }
+}
+
+[System.Serializable]
+public class SpriteRecord
+{
+    public Sprite sprite;
+    public int index;
 }
