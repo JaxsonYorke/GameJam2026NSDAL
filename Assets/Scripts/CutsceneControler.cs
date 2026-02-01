@@ -98,10 +98,10 @@ public class CutsceneController : MonoBehaviour
             if(SceneManager.GetActiveScene().name == "GameIntro")
             {
                 GameController.Instance.AdvanceFromGameIntro();
-            } else if(SceneManager.GetActiveScene().name == "inChapel")
+            } else if(SceneManager.GetActiveScene().name == "InsideChapel")
             {
                 GameController.Instance.AdvanceFromInChapel();
-            } else if(SceneManager.GetActiveScene().name == "finalScene")
+            } else if(SceneManager.GetActiveScene().name == "FinalScene")
             {
                 GameController.Instance.AdvanceFromFinalScene();
             }
