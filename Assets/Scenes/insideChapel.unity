@@ -346,7 +346,7 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: ebe289cfe642c5449950905530058a0e, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
       isKid: 0
     - dialogueSprite: {fileID: 21300000, guid: 69e11aba03cef4a4db89300c949cebba, type: 3}
@@ -361,13 +361,13 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: 855d96211ab74404bb7f0c28c443b8f9, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
-      isKid: 0
+      isKid: 1
     - dialogueSprite: {fileID: 21300000, guid: 5ee166b88720f1f4980f50f0f58c26f4, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
       isKid: 0
     - dialogueSprite: {fileID: 21300000, guid: 3f3f4fe6b1a08d6498adae58d839afb1, type: 3}
@@ -418,7 +418,7 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: 67dd9c00dd954464fbf4219054f1c6ef, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
       isKid: 1
     - dialogueSprite: {fileID: 21300000, guid: 96ec072abc4e73145a21e32053a87da7, type: 3}
