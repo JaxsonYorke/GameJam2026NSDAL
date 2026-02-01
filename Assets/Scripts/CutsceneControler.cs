@@ -55,10 +55,7 @@ public class CutsceneController : MonoBehaviour
         }
         dialoguePortrait.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         //check if we are in the finale; if so, change sprite to the one with mask 3
-        DebugStatsDisplay.Instance.RegisterDebugStatsRequest(new DebugStatsRequest("First Time", () => {return firstTime;}));
-        DebugStatsDisplay.Instance.RegisterDebugStatsRequest(new DebugStatsRequest("timeout", () => {return timeout;}));
     }
-
     void Update()
     {
         if(cutsceneType == CutSceneType.playerWalkThrough && !timeout && !isPlayingDialogue && !CutsceneMouseIcon.activeSelf)

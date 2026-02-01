@@ -11,14 +11,13 @@ public class GameController : MonoBehaviour
     {
         MainMenu,
         FirstCutscene,
-        OnRoad,
         inChapel,
         inPuzzle,
         inMaze,
         inBattle,
         finalDecision,
-        gameEnd,
-        characterDeath
+        give,
+        keep
     }
 
     [Header("State")]
@@ -99,6 +98,21 @@ public class GameController : MonoBehaviour
         SetState(GameState.inPuzzle);
     }
 
+    public void AdvanceFromFinalScene()
+    {
+        SetState(GameState.finalDecision);
+    }
+
+    public void AdvanceToGive()
+    {
+        SetState(GameState.give);
+    }
+
+    public void AdvanceToKeep()
+    {
+        SetState(GameState.keep);
+    }
+
     /* ============================================================
      * STATE TRANSITIONS
      * ============================================================ */
@@ -126,6 +140,12 @@ public class GameController : MonoBehaviour
             break;
             case GameState.finalDecision:
                 StartCoroutine(LoadSceneRoutine("FinalScene"));
+            break;
+            case GameState.give:
+                StartCoroutine(LoadSceneRoutine("give"));
+            break;
+            case GameState.keep:
+                StartCoroutine(LoadSceneRoutine("keep"));
             break;
 
         }
