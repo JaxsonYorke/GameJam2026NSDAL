@@ -52,4 +52,9 @@ public class FightController : MonoBehaviour
         //TODO: change sprites ofc
         PlayerHealth -= MinotaurDamage;
     }
+
+    public void Dodge()
+    {
+        throw new NotImplementedException();
+    }
 }

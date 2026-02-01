@@ -84,6 +84,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8576668972499975887}
+  - component: {fileID: 4073004301041254144}
   m_Layer: 5
   m_Name: DodgeQTE
   m_TagString: Untagged
@@ -112,6 +113,18 @@ RectTransform:
   m_AnchoredPosition: {x: 2, y: 91}
   m_SizeDelta: {x: 344.8974, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4073004301041254144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1151308208773563343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d4ae31baeddc6a4da86d5dd29e1c289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &1800196558157484816
 GameObject:
   m_ObjectHideFlags: 0
