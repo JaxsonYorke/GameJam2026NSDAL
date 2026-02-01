@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class GameController : MonoBehaviour
 {
@@ -15,18 +16,20 @@ public class GameController : MonoBehaviour
         inPuzzle,
         inMaze,
         inBattle,
+        finalScene,
         finalDecision,
         give,
         keep
     }
 
     [Header("State")]
-    public GameState CurrentState { get; private set; }
+    [SerializeField] public GameState CurrentState;
 
     [Header("References")]
     [SerializeField] private EventHandler eventHandler;
 
     [SerializeField] private CutsceneController storyController;
+
 
     void Awake()
     {
@@ -72,11 +75,6 @@ public class GameController : MonoBehaviour
 
         storyController = storyObj.GetComponent<CutsceneController>();
         storyController.StartCutscene();
-
-        if(scene.name == "GameIntro")
-        {
-            CurrentState = GameState.FirstCutscene;
-        }
     }
 
     /* ============================================================
@@ -138,8 +136,11 @@ public class GameController : MonoBehaviour
             case GameState.inBattle:
                 StartCoroutine(LoadSceneRoutine("Mask3"));
             break;
-            case GameState.finalDecision:
+            case GameState.finalScene:
                 StartCoroutine(LoadSceneRoutine("FinalScene"));
+            break;
+            case GameState.finalDecision:
+                StartCoroutine(LoadSceneRoutine("Decision"));
             break;
             case GameState.give:
                 StartCoroutine(LoadSceneRoutine("give"));
@@ -152,17 +153,31 @@ public class GameController : MonoBehaviour
     }
 
     /* ============================================================
-     * INPUT HANDLING (EVENT-DRIVEN)
-     * ============================================================ */
+      * ============================================================ */
 
     void OnPrimaryClick()
     {
         Debug.Log("mb1 pressed");
-        switch(CurrentState)
+        try
         {
-            case GameState.FirstCutscene when !storyController.timeout:
-                storyController.AdvanceCutscene();
-            break;
+            switch(CurrentState)
+            {
+                
+                case GameState.FirstCutscene:
+                case GameState.inChapel:
+                case GameState.finalScene:
+                case GameState.give:
+                case GameState.keep:
+                    if (!storyController.timeout)
+                    {
+                        storyController.AdvanceCutscene();
+                    }
+                break;
+            } 
+        }
+        catch (System.Exception err)
+        {
+            Debug.LogError(err);
         }
 
     }

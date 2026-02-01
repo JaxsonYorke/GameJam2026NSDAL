@@ -313,9 +313,6 @@ MonoBehaviour:
     hasDialogue: 1
     AutoSkip: 0
     dialogues:
-    - dialogueSprite: {fileID: 21300000, guid: 05186bd8223dff1429e869164b08e93b, type: 3}
-      dialogueviewtime: 2
-      isKid: 0
     - dialogueSprite: {fileID: 21300000, guid: 01d43794f985df3439d393ffe773408c, type: 3}
       dialogueviewtime: 2
       isKid: 0
@@ -346,7 +343,7 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: ebe289cfe642c5449950905530058a0e, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
       isKid: 0
     - dialogueSprite: {fileID: 21300000, guid: 69e11aba03cef4a4db89300c949cebba, type: 3}
@@ -361,13 +358,13 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: 855d96211ab74404bb7f0c28c443b8f9, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
-      isKid: 0
+      isKid: 1
     - dialogueSprite: {fileID: 21300000, guid: 5ee166b88720f1f4980f50f0f58c26f4, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
       isKid: 0
     - dialogueSprite: {fileID: 21300000, guid: 3f3f4fe6b1a08d6498adae58d839afb1, type: 3}
@@ -418,7 +415,7 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: 67dd9c00dd954464fbf4219054f1c6ef, type: 3}
       dialogueviewtime: 2
       isKid: 0
-    - dialogueSprite: {fileID: -1709088919313028402, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
+    - dialogueSprite: {fileID: 21300000, guid: cd65d1a159bdf554fb155824121b0ab9, type: 3}
       dialogueviewtime: 2
       isKid: 1
     - dialogueSprite: {fileID: 21300000, guid: 96ec072abc4e73145a21e32053a87da7, type: 3}
@@ -501,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc3824e62a6aa842ab1390208eb67f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  CurrentState: 2
   eventHandler: {fileID: 633006911}
   storyController: {fileID: 479496076}
 --- !u!4 &633006913
@@ -1002,6 +1000,66 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!1 &1783552065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1783552068}
+  - component: {fileID: 1783552067}
+  - component: {fileID: 1783552066}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1783552066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783552065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.VisualScripting.Core::Unity.VisualScripting.SceneVariables
+--- !u!114 &1783552067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783552065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.VisualScripting.Core::Unity.VisualScripting.Variables
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &1783552068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783552065}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1840910721
 GameObject:
   m_ObjectHideFlags: 0
@@ -1089,3 +1147,4 @@ SceneRoots:
   - {fileID: 479496077}
   - {fileID: 633006913}
   - {fileID: 1840910724}
+  - {fileID: 1783552068}

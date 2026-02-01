@@ -79,7 +79,7 @@ public class PlayerMovementController : MonoBehaviour
             }
             if(collision.name == "Mask")
             {
-                GameController.Instance.SetState(GameController.GameState.finalDecision);
+                GameController.Instance.SetState(GameController.GameState.finalScene);
             }
         } else if (SceneManager.GetActiveScene().name == "Mask2")
         {
