@@ -38,6 +38,10 @@ public class EventHandler : MonoBehaviour
 
             break;
             case GameController.GameState.FirstCutscene:
+            case GameController.GameState.inChapel:
+            case GameController.GameState.finalScene:
+            case GameController.GameState.give:
+            case GameController.GameState.keep:
                 if (Input.GetMouseButtonDown(0))
                 {
                     _MB1clicked.Invoke();

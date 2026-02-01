@@ -94,12 +94,16 @@ public class CutsceneController : MonoBehaviour
         }
         if (currentSprite >= SpriteList.Count)
         {
+            currentSprite = 0;
             if(SceneManager.GetActiveScene().name == "GameIntro")
             {
                 GameController.Instance.AdvanceFromGameIntro();
             } else if(SceneManager.GetActiveScene().name == "inChapel")
             {
                 GameController.Instance.AdvanceFromInChapel();
+            } else if(SceneManager.GetActiveScene().name == "finalScene")
+            {
+                GameController.Instance.AdvanceFromFinalScene();
             }
             return;
         }
