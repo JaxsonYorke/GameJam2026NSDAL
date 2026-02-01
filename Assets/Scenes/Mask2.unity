@@ -75383,6 +75383,7 @@ GameObject:
   - component: {fileID: 610636335}
   - component: {fileID: 610636334}
   - component: {fileID: 610636338}
+  - component: {fileID: 610636339}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -75543,7 +75544,36 @@ MonoBehaviour:
   MazeDoor: {fileID: 1751307547}
   MazeDoorEnd: {fileID: 734607579}
   MazeBlockEnd: {fileID: 2065848244}
+  maskedPlayerSprites:
+  - maskNumber: 1
+    up: {fileID: 0}
+    right: {fileID: 0}
+    down: {fileID: 0}
+    left: {fileID: 0}
+  CurrMask: 1
   runSpeed: 3.25
+--- !u!95 &610636339
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 610636333}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bc6f112b0b6cbe54f924cec962b9786e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &734607579
 GameObject:
   m_ObjectHideFlags: 0
