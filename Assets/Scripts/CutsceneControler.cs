@@ -24,6 +24,7 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] private GameObject CutsceneMouseIcon;
     [SerializeField] private Image image;
     [SerializeField] private Image dialogueImage;
+    [SerializeField] private Image dialoguePortrait;
     private bool isPlayingDialogue = false;
     public bool timeout;
     private bool firstTime = true;
@@ -46,6 +47,7 @@ public class CutsceneController : MonoBehaviour
     {
         CutsceneMouseIcon.SetActive(false);
         dialogueImage.gameObject.SetActive(false);
+        dialogueImage.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         dialogueImage.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         DebugStatsDisplay.Instance.RegisterDebugStatsRequest(new DebugStatsRequest("First Time", () => {return firstTime;}));
         DebugStatsDisplay.Instance.RegisterDebugStatsRequest(new DebugStatsRequest("timeout", () => {return timeout;}));
@@ -136,7 +138,10 @@ public class CutsceneController : MonoBehaviour
         {
             dialogueImage.sprite = dialogue.dialogueSprite;
             dialogueImage.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-
+            if (dialogue.isKid)
+            {
+                dialoguePortrait.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            }
             // Step 1: Wait for the dialogue cooldown
             float elapsed = 0f;
             while (elapsed < dialogue.dialogueviewtime)
@@ -156,7 +161,7 @@ public class CutsceneController : MonoBehaviour
                     clicked = true;
                 yield return null;
             }
-
+            dialoguePortrait.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
             // Disable the icon immediately after clicking
             CutsceneMouseIcon.SetActive(false);
         }
@@ -208,6 +213,7 @@ public class SpriteRecord
     {
         public Sprite dialogueSprite;
         public int dialogueviewtime;
+        public bool isKid;
     }
     public Sprite sprite;
     public int viewtime;
