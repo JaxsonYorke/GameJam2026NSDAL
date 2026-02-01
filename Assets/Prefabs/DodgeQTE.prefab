@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d4ae31baeddc6a4da86d5dd29e1c289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  slider: {fileID: 6818262658284133907}
+  countdownDuration: 5
 --- !u!1 &1800196558157484816
 GameObject:
   m_ObjectHideFlags: 0
