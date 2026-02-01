@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f7d79b7d87f546645b33a6e8737d16da
+guid: 1a0a89deb027fa844b554683046ec9c5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3667869222558582987
-    second: Kid_Forward_0
+      213: -1216877625213905347
+    second: Kid_Portrait_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Kid_Forward_0
+      name: Kid_Portrait_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 0
-        width: 53
-        height: 128
+        x: 119
+        y: 367
+        width: 328
+        height: 392
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bc8413def93e6e230800000000000000
-      internalID: 3667869222558582987
+      spriteID: d3611064f38cc1fe0800000000000000
+      internalID: -1216877625213905347
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Kid_Forward_0: 3667869222558582987
+      Kid_Portrait_0: -1216877625213905347
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
