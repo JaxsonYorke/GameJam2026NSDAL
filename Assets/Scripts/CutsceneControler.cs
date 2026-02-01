@@ -4,7 +4,7 @@ using Assets.Scripts.CustomDebug;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Profiling;
-
+using UnityEngine.SceneManagement;
 
 // This class will be a parent class for other cutscenes
 public class CutsceneController : MonoBehaviour
@@ -25,6 +25,7 @@ public class CutsceneController : MonoBehaviour
     [SerializeField] private Image image;
     [SerializeField] private Image dialogueImage;
     [SerializeField] private Image dialoguePortrait;
+    [SerializeField] private Image dialoguePortrait2;
     private bool isPlayingDialogue = false;
     public bool timeout;
     private bool firstTime = true;
@@ -48,7 +49,12 @@ public class CutsceneController : MonoBehaviour
         CutsceneMouseIcon.SetActive(false);
         dialogueImage.gameObject.SetActive(false);
         dialogueImage.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
-        dialogueImage.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        if (SceneManager.GetActiveScene().buildIndex > 2)
+        {
+            dialogueImage.sprite = dialoguePortrait2.sprite;
+        }
+        dialoguePortrait.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
+        //check if we are in the finale; if so, change sprite to the one with mask 3
         DebugStatsDisplay.Instance.RegisterDebugStatsRequest(new DebugStatsRequest("First Time", () => {return firstTime;}));
         DebugStatsDisplay.Instance.RegisterDebugStatsRequest(new DebugStatsRequest("timeout", () => {return timeout;}));
     }
@@ -76,36 +82,31 @@ public class CutsceneController : MonoBehaviour
 
 
 
-    private IEnumerator UnTimeout(float time)
-    {
-        yield return new WaitForSeconds(time);
-        timeout = false;
-    }
+    // private IEnumerator UnTimeout(float time)
+    // {
+    //     yield return new WaitForSeconds(time);
+    //     timeout = false;
+    // }
 
     public void AdvanceCutscene()
     {
-        // If dialogue is playing or we’re past the last sprite, go to next scene
-        if (currentSprite >= SpriteList.Count)
-        {
-            if(GameController.Instance.CurrentState == GameController.GameState.FirstCutscene)
-            {
-                GameController.Instance.AdvanceFromGameIntro();
-            } else if (GameController.Instance.CurrentState == GameController.GameState.inChapel)
-            {
-                GameController.Instance.AdvanceFromInChapel();
-            }
+        // If dialogue is playing or we’re past the last sprite, do nothing
+        if (currentSprite >= SpriteList.Count || isPlayingDialogue)
             return;
-        }
-        if (isPlayingDialogue)
-        {
-            return;
-        }
 
         SpriteRecord currRecord = SpriteList[currentSprite];
 
         // Show main slide immediately
         image.sprite = currRecord.sprite;
 
+        // AUTO SKIP SLIDES
+        if (currRecord.AutoSkip)
+        {
+            StartCoroutine(AutoAdvance(currRecord.viewtime));
+            return;
+        }
+
+        // NORMAL FLOW
         if (currRecord.hasDialogue && currRecord.dialogues.Count > 0)
         {
             if (firstTime)
@@ -119,6 +120,19 @@ public class CutsceneController : MonoBehaviour
         {
             StartCoroutine(AdvanceScene(currRecord.viewtime));
         }
+    }
+
+    private IEnumerator AutoAdvance(int time)
+    {
+        timeout = true;
+        CutsceneMouseIcon.SetActive(false);
+
+        yield return new WaitForSeconds(time);
+
+        timeout = false;
+        currentSprite++;
+
+        AdvanceCutscene();
     }
 
 
@@ -218,6 +232,7 @@ private IEnumerator AdvanceScene(int time)
     }
 }
 
+
 [System.Serializable]
 public class SpriteRecord
 {
@@ -231,5 +246,6 @@ public class SpriteRecord
     public Sprite sprite;
     public int viewtime;
     public bool hasDialogue;
+    public bool AutoSkip;
     public List<Dialogue> dialogues;
 }
