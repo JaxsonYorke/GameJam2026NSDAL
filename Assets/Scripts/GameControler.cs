@@ -92,14 +92,18 @@ public class GameController : MonoBehaviour
      * STATE TRANSITIONS
      * ============================================================ */
 
-    void SetState(GameState newState)
+    public void SetState(GameState newState)
     {
         CurrentState = newState;
         switch (newState)
         {
+
             case GameState.FirstCutscene:
                 StartCoroutine(LoadSceneRoutine("GameIntro"));
+            break;
 
+            case GameState.inBattle:
+                StartCoroutine(LoadSceneRoutine("inBattle"));
             break;
 
         }
