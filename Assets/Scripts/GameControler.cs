@@ -23,12 +23,13 @@ public class GameController : MonoBehaviour
     }
 
     [Header("State")]
-    public GameState CurrentState { get; private set; }
+    [SerializeField] public GameState CurrentState;
 
     [Header("References")]
     [SerializeField] private EventHandler eventHandler;
 
     [SerializeField] private CutsceneController storyController;
+
 
     void Awake()
     {
@@ -74,11 +75,6 @@ public class GameController : MonoBehaviour
 
         storyController = storyObj.GetComponent<CutsceneController>();
         storyController.StartCutscene();
-
-        if(scene.name == "GameIntro")
-        {
-            CurrentState = GameState.FirstCutscene;
-        }
     }
 
     /* ============================================================
