@@ -32,7 +32,7 @@ public class EventHandler : MonoBehaviour
 
     void Update()
     {
-        switch (gc.CurrentState)
+        switch (GameController.Instance.CurrentState)
         {
             case GameController.GameState.MainMenu:
 
