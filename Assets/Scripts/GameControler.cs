@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class GameController : MonoBehaviour
 {
@@ -10,14 +11,13 @@ public class GameController : MonoBehaviour
     {
         MainMenu,
         FirstCutscene,
-        OnRoad,
         inChapel,
         inPuzzle,
         inMaze,
         inBattle,
         finalDecision,
-        gameEnd,
-        characterDeath
+        give,
+        keep
     }
 
     [Header("State")]
@@ -88,6 +88,31 @@ public class GameController : MonoBehaviour
         SetState(GameState.FirstCutscene);
     }
 
+    public void AdvanceFromGameIntro()
+    {
+        SetState(GameState.inChapel);
+    }
+
+    public void AdvanceFromInChapel()
+    {
+        SetState(GameState.inPuzzle);
+    }
+
+    public void AdvanceFromFinalScene()
+    {
+        SetState(GameState.finalDecision);
+    }
+
+    public void AdvanceToGive()
+    {
+        SetState(GameState.give);
+    }
+
+    public void AdvanceToKeep()
+    {
+        SetState(GameState.keep);
+    }
+
     /* ============================================================
      * STATE TRANSITIONS
      * ============================================================ */
@@ -101,9 +126,26 @@ public class GameController : MonoBehaviour
             case GameState.FirstCutscene:
                 StartCoroutine(LoadSceneRoutine("GameIntro"));
             break;
-
+            case GameState.inChapel:
+                StartCoroutine(LoadSceneRoutine("InsideChapel"));
+            break;
+            case GameState.inPuzzle:
+                StartCoroutine(LoadSceneRoutine("Mask1"));
+            break;
+            case GameState.inMaze:
+                StartCoroutine(LoadSceneRoutine("Mask2"));
+            break;
             case GameState.inBattle:
-                StartCoroutine(LoadSceneRoutine("inBattle"));
+                StartCoroutine(LoadSceneRoutine("Mask3"));
+            break;
+            case GameState.finalDecision:
+                StartCoroutine(LoadSceneRoutine("FinalScene"));
+            break;
+            case GameState.give:
+                StartCoroutine(LoadSceneRoutine("give"));
+            break;
+            case GameState.keep:
+                StartCoroutine(LoadSceneRoutine("keep"));
             break;
 
         }

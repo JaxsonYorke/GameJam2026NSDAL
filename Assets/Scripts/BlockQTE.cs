@@ -15,6 +15,8 @@ public class BlockQTE : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountDown());
+        slider = GetComponentInChildren<Slider>();
+
     }
 
     // Update is called once per frame
@@ -28,9 +30,9 @@ public class BlockQTE : MonoBehaviour
 
     private void Click()
     {
-        Debug.Log("Dodged");
+        Debug.Log("Blocked");
         isDestroyed = true;
-        FightController.Instance.Dodge();
+        FightController.Instance.Block();
         Destroy(gameObject);
     }
 
@@ -50,6 +52,7 @@ public class BlockQTE : MonoBehaviour
         // Time ran out, take a hit and destroy
         if(!isDestroyed){
             FightController.Instance.TakeHit();
+            isDestroyed = true;
             Destroy(gameObject);
 
         }
