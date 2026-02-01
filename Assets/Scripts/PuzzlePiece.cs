@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.GameCenter;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PuzzlePiece : MonoBehaviour
 {
-    public float snapDistance = 0.4f;
+    public static float snapDistance = 0.4f;
     public Camera puzzleCamera;
     private Vector3 snapPosition;
     private Vector3 dragOffset;

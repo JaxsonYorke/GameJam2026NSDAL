@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class GameController : MonoBehaviour
 {
@@ -10,23 +12,24 @@ public class GameController : MonoBehaviour
     {
         MainMenu,
         FirstCutscene,
-        OnRoad,
         inChapel,
         inPuzzle,
         inMaze,
         inBattle,
+        finalScene,
         finalDecision,
-        gameEnd,
-        characterDeath
+        give,
+        keep
     }
 
     [Header("State")]
-    public GameState CurrentState { get; private set; }
+    [SerializeField] public GameState CurrentState;
 
     [Header("References")]
     [SerializeField] private EventHandler eventHandler;
 
     [SerializeField] private CutsceneController storyController;
+
 
     void Awake()
     {
@@ -72,11 +75,6 @@ public class GameController : MonoBehaviour
 
         storyController = storyObj.GetComponent<CutsceneController>();
         storyController.StartCutscene();
-
-        if(scene.name == "GameIntro")
-        {
-            CurrentState = GameState.FirstCutscene;
-        }
     }
 
     /* ============================================================
@@ -86,6 +84,31 @@ public class GameController : MonoBehaviour
     public void AdvanceFromMainMenu()
     {
         SetState(GameState.FirstCutscene);
+    }
+
+    public void AdvanceFromGameIntro()
+    {
+        SetState(GameState.inChapel);
+    }
+
+    public void AdvanceFromInChapel()
+    {
+        SetState(GameState.inPuzzle);
+    }
+
+    public void AdvanceFromFinalScene()
+    {
+        SetState(GameState.finalDecision);
+    }
+
+    public void AdvanceToGive()
+    {
+        SetState(GameState.give);
+    }
+
+    public void AdvanceToKeep()
+    {
+        SetState(GameState.keep);
     }
 
     /* ============================================================
@@ -101,26 +124,60 @@ public class GameController : MonoBehaviour
             case GameState.FirstCutscene:
                 StartCoroutine(LoadSceneRoutine("GameIntro"));
             break;
-
+            case GameState.inChapel:
+                StartCoroutine(LoadSceneRoutine("InsideChapel"));
+            break;
+            case GameState.inPuzzle:
+                StartCoroutine(LoadSceneRoutine("Mask1"));
+            break;
+            case GameState.inMaze:
+                StartCoroutine(LoadSceneRoutine("Mask2"));
+            break;
             case GameState.inBattle:
-                StartCoroutine(LoadSceneRoutine("inBattle"));
+                StartCoroutine(LoadSceneRoutine("Mask3"));
+            break;
+            case GameState.finalScene:
+                StartCoroutine(LoadSceneRoutine("FinalScene"));
+            break;
+            case GameState.finalDecision:
+                StartCoroutine(LoadSceneRoutine("Decision"));
+            break;
+            case GameState.give:
+                StartCoroutine(LoadSceneRoutine("give"));
+            break;
+            case GameState.keep:
+                StartCoroutine(LoadSceneRoutine("keep"));
             break;
 
         }
     }
 
     /* ============================================================
-     * INPUT HANDLING (EVENT-DRIVEN)
-     * ============================================================ */
+      * ============================================================ */
 
     void OnPrimaryClick()
     {
         Debug.Log("mb1 pressed");
-        switch(CurrentState)
+        try
         {
-            case GameState.FirstCutscene when !storyController.timeout:
-                storyController.AdvanceCutscene();
-            break;
+            switch(CurrentState)
+            {
+                
+                case GameState.FirstCutscene:
+                case GameState.inChapel:
+                case GameState.finalScene:
+                case GameState.give:
+                case GameState.keep:
+                    if (!storyController.timeout)
+                    {
+                        storyController.AdvanceCutscene();
+                    }
+                break;
+            } 
+        }
+        catch (System.Exception err)
+        {
+            Debug.LogError(err);
         }
 
     }

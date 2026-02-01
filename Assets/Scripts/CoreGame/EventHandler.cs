@@ -32,12 +32,16 @@ public class EventHandler : MonoBehaviour
 
     void Update()
     {
-        switch (gc.CurrentState)
+        switch (GameController.Instance.CurrentState)
         {
             case GameController.GameState.MainMenu:
 
             break;
             case GameController.GameState.FirstCutscene:
+            case GameController.GameState.inChapel:
+            case GameController.GameState.finalScene:
+            case GameController.GameState.give:
+            case GameController.GameState.keep:
                 if (Input.GetMouseButtonDown(0))
                 {
                     _MB1clicked.Invoke();
