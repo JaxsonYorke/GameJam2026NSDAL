@@ -372,40 +372,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StoryController
   cutsceneType: 0
   SpriteList:
-  - sprite: {fileID: 21300000, guid: 17343df927b28a24fa068ced5e439dc4, type: 3}
+  - sprite: {fileID: -2981129014079509440, guid: e50def3ec8f54c5428925212fa9e8814, type: 3}
     viewtime: 2
-    hasDialogue: 1
+    hasDialogue: 0
     AutoSkip: 0
-    dialogues:
-    - dialogueSprite: {fileID: 21300000, guid: 1ec05c2d382e2ff419b2f574939cb87f, type: 3}
-      dialogueviewtime: 2
-      isKid: 0
-  - sprite: {fileID: 21300000, guid: aef6ccd2f2f664e49baef5da1334845e, type: 3}
+    dialogues: []
+  - sprite: {fileID: -3360031547552793018, guid: 401e68fad2aaeac4a98311cc91837853, type: 3}
+    viewtime: 2
+    hasDialogue: 0
+    AutoSkip: 0
+    dialogues: []
+  - sprite: {fileID: -289316448995187618, guid: ed771d13398699345ae2418d8bd617ea, type: 3}
+    viewtime: 2
+    hasDialogue: 0
+    AutoSkip: 0
+    dialogues: []
+  - sprite: {fileID: -615134877766391734, guid: b4f301c2365e5014a8fecd173187f69d, type: 3}
     viewtime: 1
     hasDialogue: 0
     AutoSkip: 1
     dialogues: []
-  - sprite: {fileID: 21300000, guid: 1b45d65847b5ac24a94d71a78717d420, type: 3}
-    viewtime: 1
-    hasDialogue: 1
-    AutoSkip: 0
-    dialogues:
-    - dialogueSprite: {fileID: 21300000, guid: d997acdc82b2e0d46bb90b86187cc1a6, type: 3}
-      dialogueviewtime: 2
-      isKid: 1
-    - dialogueSprite: {fileID: 21300000, guid: 3f09275bd0663d54fb35074583bf0b1b, type: 3}
-      dialogueviewtime: 1
-      isKid: 0
-    - dialogueSprite: {fileID: 21300000, guid: fcd065df5f8448345a901411f23a2d88, type: 3}
-      dialogueviewtime: 1
-      isKid: 1
-  - sprite: {fileID: 21300000, guid: 95923e839df009648b982f622ed106d4, type: 3}
-    viewtime: 3
-    hasDialogue: 0
-    AutoSkip: 0
-    dialogues: []
-  - sprite: {fileID: 21300000, guid: 71151b0c91579a947972811072f90c1c, type: 3}
-    viewtime: 3
+  - sprite: {fileID: 7107099564537506761, guid: f2667ebaf83e8764bba5ea2f8411b9dd, type: 3}
+    viewtime: 2
     hasDialogue: 0
     AutoSkip: 0
     dialogues: []
@@ -523,50 +511,6 @@ MonoBehaviour:
   min: 0.25
   max: 0.8
   period: 1
---- !u!1 &1117344241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1117344243}
-  - component: {fileID: 1117344242}
-  m_Layer: 0
-  m_Name: CustomDebug
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1117344242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117344241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a13f5142d3a64f4686c69c842c0ab73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.CustomDebug.DebugStatsDisplay
---- !u!4 &1117344243
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117344241}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.80531, y: 3.74844, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1677130438
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +549,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -265933930, guid: ae4ae69b51928114697811c68b02737f, type: 3}
+  m_Sprite: {fileID: 433007043674788688, guid: 10a8ee1658edc1643ad86a3b9735ad98, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1042,5 +986,4 @@ SceneRoots:
   - {fileID: 1698852885}
   - {fileID: 509961786}
   - {fileID: 641772517}
-  - {fileID: 1117344243}
   - {fileID: 39653429}
