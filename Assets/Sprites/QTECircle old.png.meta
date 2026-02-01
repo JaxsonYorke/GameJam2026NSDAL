@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 8419a6ebe838e2242905c82be8fa7c61
+guid: 4381aef29b22b6a46b0439bfe0597506
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7208237940095517713
-    second: piece6_0
+      213: 1744282985261150807
+    second: QTECircle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: piece6_0
+      name: QTECircle_0
       rect:
         serializedVersion: 2
-        x: 147
-        y: 277
-        width: 107
-        height: 128
+        x: 47
+        y: 47
+        width: 418
+        height: 418
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: febfc1cc8c137fb90800000000000000
-      internalID: -7208237940095517713
+      spriteID: 752bf3c2220f43810800000000000000
+      internalID: 1744282985261150807
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      piece6_0: -7208237940095517713
+      QTECircle_0: 1744282985261150807
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

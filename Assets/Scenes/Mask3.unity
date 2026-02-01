@@ -1011,13 +1011,37 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4633932377522433862, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1744282985261150807, guid: 55d3c75adbd064d4eab325ac8f80d05b, type: 3}
     - target: {fileID: 4743360279587887351, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
       propertyPath: m_Name
       value: ClickQTE
       objectReference: {fileID: 0}
     - target: {fileID: 5047932021279844590, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
+      propertyPath: m_fontSize
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047932021279844590, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b121f1bca5cbcb74d9b58da901289161, type: 2}
+    - target: {fileID: 5047932021279844590, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
       propertyPath: m_fontStyle
-      value: 16
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047932021279844590, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 5047932021279844590, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8108622637898608561, guid: b121f1bca5cbcb74d9b58da901289161, type: 2}
+    - target: {fileID: 5047932021279844590, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6869398700283366842, guid: 98a4de1c537cd304782fc06244885a2b, type: 3}
       propertyPath: m_TargetGraphic
@@ -1125,6 +1149,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: DodgeQTE
       objectReference: {fileID: 0}
+    - target: {fileID: 3016083177871427163, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
+      propertyPath: m_fontSize
+      value: 18.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016083177871427163, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b121f1bca5cbcb74d9b58da901289161, type: 2}
+    - target: {fileID: 3016083177871427163, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
+      propertyPath: m_fontStyle
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 3016083177871427163, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8108622637898608561, guid: b121f1bca5cbcb74d9b58da901289161, type: 2}
+    - target: {fileID: 3016083177871427163, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5153739287735402005, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1133,6 +1177,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5298702997026805951, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3783027966462950364, guid: 56fe70e5181001c469b62e33361b6835, type: 3}
     - target: {fileID: 8576668972499975887, guid: 8fc6686a87081f54fb6a2c0e44d53a02, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

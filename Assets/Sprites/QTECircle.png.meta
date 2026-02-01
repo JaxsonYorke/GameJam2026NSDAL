@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4381aef29b22b6a46b0439bfe0597506
+guid: 55d3c75adbd064d4eab325ac8f80d05b
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,10 +103,10 @@ TextureImporter:
       name: QTECircle_0
       rect:
         serializedVersion: 2
-        x: 47
-        y: 47
-        width: 418
-        height: 418
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
