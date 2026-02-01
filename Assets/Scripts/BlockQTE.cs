@@ -52,6 +52,7 @@ public class BlockQTE : MonoBehaviour
         // Time ran out, take a hit and destroy
         if(!isDestroyed){
             FightController.Instance.TakeHit();
+            isDestroyed = true;
             Destroy(gameObject);
 
         }

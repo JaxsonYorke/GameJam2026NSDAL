@@ -84,9 +84,22 @@ public class CutsceneController : MonoBehaviour
 
     public void AdvanceCutscene()
     {
-        // If dialogue is playing or we’re past the last sprite, do nothing
-        if (currentSprite >= SpriteList.Count || isPlayingDialogue)
+        // If dialogue is playing or we’re past the last sprite, go to next scene
+        if (currentSprite >= SpriteList.Count)
+        {
+            if(GameController.Instance.CurrentState == GameController.GameState.FirstCutscene)
+            {
+                GameController.Instance.AdvanceFromGameIntro();
+            } else if (GameController.Instance.CurrentState == GameController.GameState.inChapel)
+            {
+                GameController.Instance.AdvanceFromInChapel();
+            }
             return;
+        }
+        if (isPlayingDialogue)
+        {
+            return;
+        }
 
         SpriteRecord currRecord = SpriteList[currentSprite];
 

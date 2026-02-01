@@ -85,6 +85,7 @@ public class DodgeQTE : MonoBehaviour
         
         // Time ran out, take a hit and destroy
         if(!isDestroyed){
+            isDestroyed = true;
             FightController.Instance.TakeHit();
             Destroy(gameObject);
 
