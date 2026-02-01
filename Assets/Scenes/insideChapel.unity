@@ -308,7 +308,7 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: 05186bd8223dff1429e869164b08e93b, type: 3}
       dialogueviewtime: 2
       isKid: 0
-  - sprite: {fileID: -1852297057493199523, guid: e39059cc98f144544b81163a216866f8, type: 3}
+  - sprite: {fileID: 21300000, guid: 14e99d190afc7bd49a82ba24bce6ddc5, type: 3}
     viewtime: 2
     hasDialogue: 1
     AutoSkip: 0

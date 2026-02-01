@@ -547,7 +547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StoryController
   cutsceneType: 0
   SpriteList:
-  - sprite: {fileID: -1852297057493199523, guid: e39059cc98f144544b81163a216866f8, type: 3}
+  - sprite: {fileID: 21300000, guid: 14e99d190afc7bd49a82ba24bce6ddc5, type: 3}
     viewtime: 2
     hasDialogue: 1
     AutoSkip: 0
@@ -584,6 +584,11 @@ MonoBehaviour:
     - dialogueSprite: {fileID: 21300000, guid: 01d63767202d6004fa1db55661242918, type: 3}
       dialogueviewtime: 2
       isKid: 0
+  - sprite: {fileID: 21300000, guid: 9f84fcbe85da0de4caf6e872b6bc5884, type: 3}
+    viewtime: 2
+    hasDialogue: 0
+    AutoSkip: 0
+    dialogues: []
   canvas: {fileID: 463081558}
   CutsceneMouseIcon: {fileID: 1939165963}
   image: {fileID: 1852344624}
@@ -658,6 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc3824e62a6aa842ab1390208eb67f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  CurrentState: 0
   eventHandler: {fileID: 592919997}
   storyController: {fileID: 567970738}
 --- !u!4 &592919999
