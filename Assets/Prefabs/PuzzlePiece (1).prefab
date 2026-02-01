@@ -217,3 +217,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8574b6f71984d5b40afff5dbe3ab617a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  snapDistance: 0.1
+  puzzleCamera: {fileID: 0}
