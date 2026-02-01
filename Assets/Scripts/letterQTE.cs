@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class letterQTE : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private string possibleLetters = "`1234567890-=qwertyuiop[]asdfghjkl;'zxcvbnm,./";
+    private string possibleLetters = "`1234567890-=qwertyuiop[]fghjkl;'zxcvbnm,./";
     [SerializeField] private TextMeshProUGUI test;
     private char chosenletter;
 
@@ -20,6 +20,7 @@ public class letterQTE : MonoBehaviour
     void Start()
     {
         test = GetComponentInChildren<TextMeshProUGUI>();
+        slider = GetComponentInChildren<Slider>();
         DecideLetter();
         StartCoroutine(CountDown());
     }
@@ -104,15 +105,6 @@ public class letterQTE : MonoBehaviour
                 break;
             case ']':
                 if (Input.GetKeyDown(KeyCode.RightBracket)) Click();
-                break;
-            case 'a':
-                if (Input.GetKeyDown(KeyCode.A)) Click();
-                break;
-            case 's':
-                if (Input.GetKeyDown(KeyCode.S)) Click();
-                break;
-            case 'd':
-                if (Input.GetKeyDown(KeyCode.D)) Click();
                 break;
             case 'f':
                 if (Input.GetKeyDown(KeyCode.F)) Click();
@@ -208,7 +200,6 @@ public class letterQTE : MonoBehaviour
         
         // Time ran out, take a hit and destroy
         if(!isDestroyed){
-            FightController.Instance.TakeHit();
             Destroy(gameObject);
 
         }
