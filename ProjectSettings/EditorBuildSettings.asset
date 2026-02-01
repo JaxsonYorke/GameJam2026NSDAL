@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/insideChapel.unity
     guid: 61cd8a62acd94984c9b2c66ee0b2cccc
   - enabled: 1
-    path: Assets/Scenes/Mask1.unity
+    path: Assets/CutScenesAssets/Mask1.unity
     guid: b25462f8832d4cd4388b0a550c67a9a3
   - enabled: 1
     path: Assets/Scenes/Mask2.unity

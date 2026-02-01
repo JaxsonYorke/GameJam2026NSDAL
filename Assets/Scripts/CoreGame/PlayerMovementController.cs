@@ -1,36 +1,41 @@
+using System.Reflection;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovementController : MonoBehaviour
 {
-    Rigidbody2D body;
+    [SerializeField] private float runSpeed = 3.5f;
+    private Rigidbody2D body;
+    private Vector2 moveInput;
+    private Animator animator;
 
-    float horizontal;
-    float vertical;
-    float moveLimiter = 0.7f;
-
-    public float runSpeed = 20.0f;
 
     void Start ()
     {
         body = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Gives a value between -1 and 1
-        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
+        body.linearVelocity = moveInput * runSpeed;
     }
 
-    void FixedUpdate()
+    public void Move(InputAction.CallbackContext context)
     {
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-        {
-            // limit movement speed diagonally, so you move at 70% speed
-            horizontal *= moveLimiter;
-            vertical *= moveLimiter;
-        } 
+        animator.SetBool("isWalking", true);
 
-        body.linearVelocity = new Vector2(horizontal * runSpeed, vertical * runSpeed);
+        if(context.canceled)
+        {
+            animator.SetBool("isWalking", false);
+            if(moveInput.x != 0)
+            {
+                animator.SetFloat("LastInputX", moveInput.x);
+            }
+        }
+
+        moveInput = context.ReadValue<Vector2>();
+        animator.SetFloat("InputX", moveInput.x);
     }
+
 }
