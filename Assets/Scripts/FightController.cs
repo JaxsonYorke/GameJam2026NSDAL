@@ -147,7 +147,7 @@ string GetRandomQTE(Difficulty difficulty)
     public void MinotaurWin()
     {
         IsInFight = false;
-        GameController.Instance.SetState(GameController.GameState.OnRoad);        
+        GameController.Instance.SetState(GameController.GameState.inChapel);
     }
 
     public void PlayerWin()
