@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: FourWayHedge
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 7482667652216324306, guid: c77b22f5fa4fa6048b62a73fe959b185, type: 3}
+  m_Sprite: {fileID: -675127591, guid: ba9b8cca6cf7c514f9efd664c379cf95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

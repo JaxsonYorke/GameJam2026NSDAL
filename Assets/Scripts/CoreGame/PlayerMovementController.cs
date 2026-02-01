@@ -19,7 +19,6 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D body;
     private Vector2 moveInput;
     private Animator animator;
-    [SerializeField] [OptionalField] private GameObject MazeDoor;
     [SerializeField] [OptionalField] private GameObject MazeDoorEnd;
     [SerializeField] [OptionalField] private GameObject MazeBlockEnd;
 
@@ -84,15 +83,11 @@ public class PlayerMovementController : MonoBehaviour
             }
         } else if (SceneManager.GetActiveScene().name == "Mask2")
         {
-            if (collision.name == "CloseTrigger")
-            {
-                collision.GetComponent<BoxCollider2D>().enabled = false;
-                StartCoroutine(SlideDoorUp());
-            } else if(collision.name == "SecondMask")
+            if(collision.name == "SecondMask")
             {
                 // TODO: change the sprites
                 collision.gameObject.SetActive(false);
-                StartCoroutine(SlideDoorDown());
+                SlideDoorDown();
                 MazeBlockEnd.SetActive(false);
 
             } else if(collision.name == "LevelEndTrigger")
@@ -102,43 +97,8 @@ public class PlayerMovementController : MonoBehaviour
         }
     }
 
-
-    IEnumerator SlideDoorUp()
+    void SlideDoorDown()
     {
-        Vector3 startPos = MazeDoor.transform.position;
-        Vector3 endPos = startPos + Vector3.up;
-        float duration = 1f; // seconds
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            MazeDoor.transform.position =
-                Vector3.Lerp(startPos, endPos, elapsed / duration);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        MazeDoor.transform.position = endPos;
-    }
-
-    IEnumerator SlideDoorDown()
-    {
-        Vector3 startPos = MazeDoorEnd.transform.position;
-        Vector3 endPos = startPos + Vector3.down; // move 1 unit down
-        float duration = 1f; // move over 1 second
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            MazeDoorEnd.transform.position =
-                Vector3.Lerp(startPos, endPos, elapsed / duration);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        MazeDoorEnd.transform.position = endPos; // ensure exact final position
         MazeDoorEnd.SetActive(false);
     }
 

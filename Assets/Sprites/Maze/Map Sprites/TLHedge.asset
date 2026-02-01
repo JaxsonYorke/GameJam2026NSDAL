@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: TLHedge
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
-  m_Sprite: {fileID: 7482667652216324306, guid: 9c3a1ad4ce288b44884e955f56a25cb0, type: 3}
+  m_Sprite: {fileID: -2121126171, guid: ba9b8cca6cf7c514f9efd664c379cf95, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
