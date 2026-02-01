@@ -103,7 +103,6 @@ public class CutsceneController : MonoBehaviour
             } else if(SceneManager.GetActiveScene().name == "inChapel")
             {
                 GameController.Instance.AdvanceFromInChapel();
-
             }
             return;
         }
