@@ -4,6 +4,8 @@ using UnityEngine.Events;
 [RequireComponent(typeof(GameController))]
 public class EventHandler : MonoBehaviour
 {
+    public static EventHandler Instance;
+
     private GameController gc;
     const int INSPECTORSPACING = 8;
     [Header("Game Wide")][Space(INSPECTORSPACING)]
@@ -11,6 +13,17 @@ public class EventHandler : MonoBehaviour
 
     [SerializeField] private UnityEvent _MB1clicked = new();
     [SerializeField] private UnityEvent _MB2clicked = new();
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     void Start()
     {
