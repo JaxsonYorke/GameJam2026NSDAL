@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class PuzzleManager : MonoBehaviour
@@ -45,6 +44,6 @@ public class PuzzleManager : MonoBehaviour
     void OnPuzzleComplete()
     {
         Debug.Log("Puzzle finished");
-        
+        GameController.Instance.SetState(GameController.GameState.inMaze);
     }
 }

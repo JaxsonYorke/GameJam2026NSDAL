@@ -233,5 +233,10 @@ float GetCurrentSpeedMultiplier()
         PlayerHealth -= MinotaurDamage / 2;
         currentResolved = true;
     }
+
+    internal void Miss()
+    {
+        currentResolved = true;
+    }
 }
 

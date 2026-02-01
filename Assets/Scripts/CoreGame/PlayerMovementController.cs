@@ -1,9 +1,17 @@
+using System.Collections;
+using System.Runtime.InteropServices;
+using System.Runtime.Serialization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PlayerMovementController : MonoBehaviour
 {
     Rigidbody2D body;
+    [SerializeField] [OptionalField] private GameObject MazeDoor;
+    [SerializeField] [OptionalField] private GameObject MazeDoorEnd;
+    [SerializeField] [OptionalField] private GameObject MazeBlockEnd;
+
 
     float horizontal;
     float vertical;
@@ -54,6 +62,64 @@ public class PlayerMovementController : MonoBehaviour
             {
                 GameController.Instance.SetState(GameController.GameState.finalDecision);
             }
+        } else if (SceneManager.GetActiveScene().name == "Mask2")
+        {
+            if (collision.name == "CloseTrigger")
+            {
+                collision.GetComponent<BoxCollider2D>().enabled = false;
+                StartCoroutine(SlideDoorUp());
+            } else if(collision.name == "SecondMask")
+            {
+                // TODO: change the sprites
+                collision.gameObject.SetActive(false);
+                StartCoroutine(SlideDoorDown());
+                MazeBlockEnd.SetActive(false);
+
+            } else if(collision.name == "LevelEndTrigger")
+            {
+                GameController.Instance.SetState(GameController.GameState.inBattle);
+            }
         }
     }
+
+
+    IEnumerator SlideDoorUp()
+    {
+        Vector3 startPos = MazeDoor.transform.position;
+        Vector3 endPos = startPos + Vector3.up;
+        float duration = 1f; // seconds
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            MazeDoor.transform.position =
+                Vector3.Lerp(startPos, endPos, elapsed / duration);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        MazeDoor.transform.position = endPos;
+    }
+
+    IEnumerator SlideDoorDown()
+    {
+        Vector3 startPos = MazeDoorEnd.transform.position;
+        Vector3 endPos = startPos + Vector3.down; // move 1 unit down
+        float duration = 1f; // move over 1 second
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            MazeDoorEnd.transform.position =
+                Vector3.Lerp(startPos, endPos, elapsed / duration);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        MazeDoorEnd.transform.position = endPos; // ensure exact final position
+        MazeDoorEnd.SetActive(false);
+    }
+
 }

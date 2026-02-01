@@ -200,6 +200,8 @@ public class letterQTE : MonoBehaviour
         
         // Time ran out, take a hit and destroy
         if(!isDestroyed){
+            isDestroyed = true;
+            FightController.Instance.Miss();
             Destroy(gameObject);
 
         }
