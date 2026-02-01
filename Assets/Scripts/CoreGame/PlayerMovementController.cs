@@ -1,8 +1,6 @@
-<<<<<<< HEAD
 using System.Reflection;
 using UnityEngine;
 using UnityEngine.InputSystem;
-=======
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -12,19 +10,15 @@ using Unity.VisualScripting.ReorderableList.Element_Adder_Menu;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
->>>>>>> 2bd222e336acc0fa7f03a784bc5cceed3f8c8536
 
 [RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
 {
-<<<<<<< HEAD
     [SerializeField] private float runSpeed = 3.5f;
     private Rigidbody2D body;
     private Vector2 moveInput;
     private Animator animator;
-=======
-    Rigidbody2D body;
     [SerializeField] [OptionalField] private GameObject MazeDoor;
     [SerializeField] [OptionalField] private GameObject MazeDoorEnd;
     [SerializeField] [OptionalField] private GameObject MazeBlockEnd;
@@ -36,7 +30,6 @@ public class PlayerMovementController : MonoBehaviour
     public int CurrMask = 1;
 
 
->>>>>>> 2bd222e336acc0fa7f03a784bc5cceed3f8c8536
 
 
 
@@ -44,43 +37,19 @@ public class PlayerMovementController : MonoBehaviour
     void Start ()
     {
         body = GetComponent<Rigidbody2D>();
-<<<<<<< HEAD
         animator = GetComponent<Animator>();
-=======
         sr = GetComponent<SpriteRenderer>();
->>>>>>> 2bd222e336acc0fa7f03a784bc5cceed3f8c8536
     }
 
     void Update()
     {
-<<<<<<< HEAD
         body.linearVelocity = moveInput * runSpeed;
-=======
+
         if(SceneManager.GetActiveScene().name == "Mask3" && FightController.Instance.IsInFight)
         {
-            horizontal = 0;
-            vertical = 0;
+            body.linearVelocity = moveInput * 0;
             return;
         }
-        // Gives a value between -1 and 1
-        horizontal = Input.GetAxisRaw("Horizontal"); // -1 is left
-        vertical = Input.GetAxisRaw("Vertical"); // -1 is down
-
-
-        // if(horizontal == 1)
-        // {
-        //     sr.sprite = maskedPlayerSprites[CurrMask].right;
-        // } else if( horizontal == -1)
-        // {
-        //     sr.sprite = maskedPlayerSprites[CurrMask].left;
-        // } else if (vertical == 1)
-        // {
-        //     sr.sprite = maskedPlayerSprites[CurrMask].up;
-        // } else if(vertical == -1)
-        // {
-        //     sr.sprite = maskedPlayerSprites[CurrMask].down;
-        // }
->>>>>>> 2bd222e336acc0fa7f03a784bc5cceed3f8c8536
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -100,8 +69,6 @@ public class PlayerMovementController : MonoBehaviour
         animator.SetFloat("InputX", moveInput.x);
     }
 
-<<<<<<< HEAD
-=======
     void OnTriggerEnter2D(Collider2D collision)
     {
         if(SceneManager.GetActiveScene().name == "Mask3")
@@ -175,7 +142,6 @@ public class PlayerMovementController : MonoBehaviour
         MazeDoorEnd.SetActive(false);
     }
 
->>>>>>> 2bd222e336acc0fa7f03a784bc5cceed3f8c8536
 }
 [System.Serializable]
 public class MaskedPlayerSprites
