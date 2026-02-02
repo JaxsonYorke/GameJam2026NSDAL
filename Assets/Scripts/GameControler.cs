@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 
 public class GameController : MonoBehaviour
 {

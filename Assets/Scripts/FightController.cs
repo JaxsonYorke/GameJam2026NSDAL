@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FightController : MonoBehaviour
 {
@@ -20,6 +22,7 @@ public class FightController : MonoBehaviour
     [SerializeField] private int PlayerDamage = 2;
 
     [SerializeField] private GameObject Canvas;
+    [SerializeField] private GameObject character;
 
     [SerializeField] private GameObject hitQTE;
     [SerializeField] private GameObject blockQTE;
@@ -36,6 +39,18 @@ public class FightController : MonoBehaviour
 
     [SerializeField] private float easySpeedMultiplier = 1f;
     [SerializeField] private float hardSpeedMultiplier = 0.5f;
+
+    [SerializeField] private Sprite MinotaurAttack;
+    [SerializeField] private Sprite MinotaurHurtAttack;
+    [SerializeField] private Sprite MinotaurIdle;
+    [SerializeField] private Sprite MinotaurHurtIdle;
+
+    [SerializeField] private Sprite KidAttack;
+    [SerializeField] private Sprite KidIdle;
+    [SerializeField] private Sprite KidBlock;
+
+
+
 
     private enum Difficulty
     {
@@ -82,6 +97,7 @@ public class FightController : MonoBehaviour
         Canvas.SetActive(true);
         IsInFight = true;
         //? Maybe minataur apears, slides from top?
+        character.SetActive(false);
         StartCoroutine(manageWaves());
 
     }
@@ -154,6 +170,7 @@ string GetRandomQTE(Difficulty difficulty)
     {
         IsInFight = false;
         Canvas.SetActive(false);
+        character.SetActive(true);
     }
 
 
@@ -211,6 +228,14 @@ float GetCurrentSpeedMultiplier()
     public void Hit()
     {
         //TODO: Change each sprite to have been hit and hit
+        Player.GetComponent<Image>().sprite = KidAttack;
+        if(MinotaurHealth < minotaurMaxHealth / 2)
+        {
+            // Minotaur.GetComponent<Image>().sprite = MinotaurHurtAttack;
+            
+        }
+        StartCoroutine(backToIdle(0));
+        // StartCoroutine(backToIdle(1));
         MinotaurHealth -= PlayerDamage;
         currentResolved = true;
     }   
@@ -218,6 +243,17 @@ float GetCurrentSpeedMultiplier()
     public void TakeHit()
     {
         //TODO: change sprites ofc
+        Player.GetComponent<Image>().sprite = KidAttack;
+        if(MinotaurHealth < minotaurMaxHealth / 2)
+        {
+            Minotaur.GetComponent<Image>().sprite = MinotaurHurtAttack;
+            
+        } else
+        {
+            Minotaur.GetComponent<Image>().sprite = MinotaurAttack;
+        }
+        StartCoroutine(backToIdle(0));
+        StartCoroutine(backToIdle(1));
         PlayerHealth -= MinotaurDamage;
         currentResolved = true;
     }
@@ -225,18 +261,59 @@ float GetCurrentSpeedMultiplier()
     public void Dodge()
     {
         // TODO: Change sprites, no dmg change
+        if(MinotaurHealth < minotaurMaxHealth / 2)
+        {
+            Minotaur.GetComponent<Image>().sprite = MinotaurHurtAttack;
+            
+        } else
+        {
+            Minotaur.GetComponent<Image>().sprite = MinotaurAttack;
+        }
+        StartCoroutine(backToIdle(1));
         currentResolved = true;
     }
 
     public void Block()
     {
-        PlayerHealth -= MinotaurDamage / 2;
+        Player.GetComponent<Image>().sprite = KidBlock;
+        if(MinotaurHealth < minotaurMaxHealth / 2)
+        {
+            Minotaur.GetComponent<Image>().sprite = MinotaurHurtAttack;
+            
+        } else
+        {
+            Minotaur.GetComponent<Image>().sprite = MinotaurAttack;
+        }
+        StartCoroutine(backToIdle(0));
+        StartCoroutine(backToIdle(1));
+        PlayerHealth -= MinotaurDamage / 2;        
         currentResolved = true;
     }
 
     internal void Miss()
     {
         currentResolved = true;
+    }
+
+    IEnumerator backToIdle(int which)
+    {
+        yield return new WaitForSeconds(0.3f);
+        if(which == 0)
+        {
+            Player.GetComponent<Image>().sprite = KidIdle;
+        } else
+        {
+            if(MinotaurHealth < minotaurMaxHealth / 2)
+                {
+                    Minotaur.GetComponent<Image>().sprite = MinotaurHurtIdle;
+                    
+                } else
+                {
+                    Minotaur.GetComponent<Image>().sprite = MinotaurIdle;
+                }
+            
+        }
+        yield return null;
     }
 }
 

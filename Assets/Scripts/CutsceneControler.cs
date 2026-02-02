@@ -85,8 +85,10 @@ public class CutsceneController : MonoBehaviour
     //     timeout = false;
     // }
 
+    bool GameEnd = false;
     public void AdvanceCutscene()
     {
+        if(GameEnd == true) {return;}
         // If dialogue is playing or we’re past the last sprite, do nothing
         if (isPlayingDialogue)
         {
@@ -101,9 +103,10 @@ public class CutsceneController : MonoBehaviour
             } else if(SceneManager.GetActiveScene().name == "insideChapel")
             {
                 GameController.Instance.AdvanceFromInChapel();
-            } else if(SceneManager.GetActiveScene().name == "FinalScene")
+            } 
+            else if(SceneManager.GetActiveScene().name == "FinalScene")
             {
-                GameController.Instance.AdvanceFromFinalScene();
+                GameEnd = true;
             }
             return;
         }
